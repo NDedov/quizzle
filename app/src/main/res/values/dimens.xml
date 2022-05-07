@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="question_text_size">18sp</dimen>
+    <dimen name="padding_text">4dp</dimen>
+    <dimen name="button_margin">12dp</dimen>
+    <dimen name="button_text_size">18sp</dimen>
+    <dimen name="button_height">56dp</dimen>
+
+    <dimen name="question_margin_top">4dp</dimen>
+    <dimen name="question_margin_start">12dp</dimen>
+    <dimen name="question_margin_bottom">12dp</dimen>
+    <dimen name="question_margin_end">8dp</dimen>
+
+</resources>
