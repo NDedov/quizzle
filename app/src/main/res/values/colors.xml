@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background_color">#75939C</color>
+    <color name="button_color">#9AC3CE</color>
+    <color name="correct_answer">#57D9B7</color>
+    <color name="wrong_answer">#BA5E6F</color>
+    <color name="hint_color">#9AC3CE</color>
+    <color name="button_color_old">#65B8DF</color>
+
+
 </resources>
