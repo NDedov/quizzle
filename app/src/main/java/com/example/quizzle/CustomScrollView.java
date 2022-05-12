@@ -31,6 +31,7 @@ public class CustomScrollView extends NestedScrollView {
         super(context);
     }
 
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
 

@@ -119,7 +119,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button4"
                     style="@style/ButtonStyle"
-                    android:text="Ответ3"
+                    android:text="Ответ4"
                     android:layout_width="match_parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +136,7 @@
                 android:id="@+id/linearDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <View
@@ -144,19 +144,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/divider_height"
                     android:layout_marginStart="@dimen/divider_margin_start"
-
                     android:layout_marginTop="@dimen/divider_margin_top"
                     android:layout_marginEnd="@dimen/divider_margin_end"
+                    android:layout_marginBottom="@dimen/divider_margin_bottom"
+
                     android:background="?android:attr/listDivider"
-
-                    android:visibility="invisible" />
-
+                     />
+                <ImageView
+                    android:id="@+id/imageAnswer"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:src="@drawable/a1" />
                 <TextView
                     android:id="@+id/textDescription"
                     style="@style/DescriptionStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="invisible" />
+                    />
             </LinearLayout>
 
         </LinearLayout>
@@ -169,6 +173,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layoutAnimation="@anim/popinlayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -182,7 +187,7 @@
             android:layout_gravity="bottom"
             android:layout_marginStart="@dimen/button_margin"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/people_32px"
+            android:drawableLeft="@drawable/ic_peopletalk_v2"
             android:text="Button" />
 
         <com.google.android.material.button.MaterialButton
@@ -192,7 +197,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/dices_32px"
+            android:drawableLeft="@drawable/ic_dice"
             android:text="Button" />
 
         <com.google.android.material.button.MaterialButton
@@ -202,7 +207,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/percent50_32px"
+            android:drawableLeft="@drawable/ic_50percent"
             android:layout_marginEnd="@dimen/button_margin"
 
 

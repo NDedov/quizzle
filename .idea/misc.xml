@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pc_android/AndroidStudioProjects/quizzle/app/src/main/res/drawable/ic_50percent.xml" value="0.2975" />
+        <entry key="..\:/Users/pc_android/AndroidStudioProjects/quizzle/app/src/main/res/drawable/ic_50percent_grey.xml" value="0.2975" />
+        <entry key="..\:/Users/pc_android/AndroidStudioProjects/quizzle/app/src/main/res/drawable/ic_dice.xml" value="0.2975" />
+        <entry key="..\:/Users/pc_android/AndroidStudioProjects/quizzle/app/src/main/res/drawable/ic_dice_grey.xml" value="0.2975" />
+        <entry key="..\:/Users/pc_android/AndroidStudioProjects/quizzle/app/src/main/res/drawable/ic_peopletalk_v.xml" value="0.2975" />
+        <entry key="..\:/Users/pc_android/AndroidStudioProjects/quizzle/app/src/main/res/drawable/ic_peopletalk_v2.xml" value="0.2975" />
+        <entry key="..\:/Users/pc_android/AndroidStudioProjects/quizzle/app/src/main/res/drawable/ic_peopletalk_v2_grey.xml" value="0.2975" />
         <entry key="..\:/Users/pc_android/AndroidStudioProjects/quizzle/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/pc_android/AndroidStudioProjects/quizzle/app/src/main/res/layout/question4.xml" value="0.264" />
       </map>

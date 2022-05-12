@@ -7,8 +7,10 @@ import androidx.core.widget.NestedScrollView;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -20,6 +22,7 @@ import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Random;
 
 class answer {
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button button1, button2, button3, button4;
     LinearProgressIndicator progressBar1,progressBar2,progressBar3,progressBar4;
     LinearLayout linearLayoutDescription;
+    float alphaButton = 0.3f;
 
     Button button50percent, button2chance, buttonPeople;
     View divider;
@@ -70,14 +74,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean button1_visible = true, button2_visible = true, button3_visible = true, button4_visible = true; // для подсказок
     int hint50percent = 255;// количество подсказок
     int hint2chance = 267;
-    int hintPeople = 7;
+    int hintPeople = 56;
 
     CustomScrollView customScrollView; //скрол, который можно замораживать
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.question4);
         initViews();
         answerDone = false;
@@ -124,7 +128,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         divider = findViewById(R.id.divider);
         linearLayoutDescription = findViewById(R.id.linearDescription);
 
-        customScrollView.setEnableScrolling(false);
+        //customScrollView.setEnableScrolling(false);
+        customScrollView.setEnableScrolling(true);
+
     }
 
     private void initClickers() {
@@ -149,9 +155,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initHints(boolean isActive) {//заполнение текста на подсказках
         String htmlTemp;
-        if (!isActive){
-            //todo серые картинки
+        if (!isActive){//красим иконки в серый
+            button50percent.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_50percent_grey, 0, 0, 0);
+            button2chance.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_dice_grey, 0, 0, 0);
+            buttonPeople.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_peopletalk_v2_grey, 0, 0, 0);
         }
+
         if (hint50percent > 0) {
             htmlTemp = "<b>x" + hint50percent + "</b><br>" + "убрать" + "<br>" + "2 варианта";
             button50percent.setText(HtmlCompat.fromHtml(htmlTemp,0));
@@ -210,9 +219,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             hint50percent--;
                             initHints(false);
                         }
-                        else {
+                        else
                             buyHints();
-                        }
 
                         break;
                     case (R.id.buttonPeople):
@@ -222,7 +230,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             hintPeople--;
                             initHints(false);
                         }
-
+                        else
+                            buyHints();
                         break;
                     case (R.id.button2chance):
                         if (hint2chance > 0){
@@ -231,9 +240,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             hint2chance--;
                             initHints(false);
                         }
-
+                        else
+                            buyHints();
                         break;
                 }
+
             }
 
         }
@@ -292,28 +303,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (!answersList.get(rnd_int).isCorrect()){
                 switch (rnd_int){
                     case (0):
-                        button1.setVisibility(View.INVISIBLE);
-                        button1_visible = false;
+                        if (button1_visible){
+                            button1.setAlpha(alphaButton);
+                            //button1.setOnClickListener(null);
+                            button1.setEnabled(false);
+                            //button1.setVisibility(View.INVISIBLE);
+                            button1_visible = false;
+                            answersAmount--;
+                        }
                         break;
                     case (1):
-                        button2.setVisibility(View.INVISIBLE);
-                        button2_visible = false;
+                        if (button2_visible){
+                            button2.setAlpha(alphaButton);
+                            button2.setEnabled(false);
+                            //button2.setOnClickListener(null);
+                            //button2.setVisibility(View.INVISIBLE);
+                            button2_visible = false;
+                            answersAmount--;
+                        }
                         break;
                     case (2):
-                        button3.setVisibility(View.INVISIBLE);
-                        button3_visible = false;
+                        if (button3_visible){
+                            button3.setAlpha(alphaButton);
+                            //button3.setOnClickListener(null);
+                            button3.setEnabled(false);
+                            //button3.setVisibility(View.INVISIBLE);
+                            button3_visible = false;
+                            answersAmount--;
+                        }
                         break;
                     case (3):
-                        button4.setVisibility(View.INVISIBLE);
-                        button4_visible = false;
+                        if (button4_visible){
+                            button4.setAlpha(alphaButton);
+                            //button4.setOnClickListener(null);
+                            button4.setEnabled(false);
+                            //button4.setVisibility(View.INVISIBLE);
+                            button4_visible = false;
+                            answersAmount--;
+                        }
                         break;
                 }
-                answersAmount--;
-
             }
-
         }
-
     }
 
     void paintButton(int num, Button button){//раскрашивает кнопки ответов в зависимости
@@ -351,11 +382,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     void enableDescription()// делает описание видимым
     {
-        //linearLayoutDescription.setVisibility(View.VISIBLE);
-        descriptionView.setVisibility(View.VISIBLE);
-        divider.setVisibility(View.VISIBLE);
-        customScrollView.smoothScrollTo(0,750, 700);
-        customScrollView.setEnableScrolling(true);
+        linearLayoutDescription.setVisibility(View.VISIBLE);
+        ViewTreeObserver vto = linearLayoutDescription.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {//выводим на
+            //экран когда нарисовался Layout
+            @Override
+            public void onGlobalLayout() {
+                linearLayoutDescription.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                customScrollView.smoothScrollTo(0,750, 700);
+            }
+        });
     }
 }
 
